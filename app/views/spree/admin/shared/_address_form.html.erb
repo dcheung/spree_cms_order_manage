@@ -1,0 +1,36 @@
+<% s_or_b = type.chars.first %>
+
+<div id="<%= type %>" data-hook="address_fields">
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :user_name, Spree.t(:user_name) %>
+    <%= f.text_field :user_name, :class => 'fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :address1, Spree.t(:street_address) %>
+    <%= f.text_field :address1, :class => 'fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :district, Spree.t(:district) %>
+    <%= f.text_field :district, :class => 'fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :city, Spree.t(:city) %>
+    <%= f.text_field :city, :class => 'fullwidth' %>
+  </div>
+
+  <div class="field <%= "#{type}-row" %>">
+    <%= f.label :phone, Spree.t(:phone) %>
+    <%= f.phone_field :phone, :class => 'fullwidth' %>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <%= javascript_tag do -%>
+    $(document).ready(function(){
+      $('span#<%= s_or_b %>country .select2').on('change', function() { update_state('<%= s_or_b %>'); });
+    });
+  <% end -%>
+<% end %>

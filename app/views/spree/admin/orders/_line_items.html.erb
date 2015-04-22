@@ -19,7 +19,13 @@
       <% order.line_items.each do |item| %>
         
         <tr class="line-item" id="line-item-<%= item.id %>">
-          <td class="line-item-image"><%= image_tag item.product.variant_images[0].attachment.url(:mini) %></td>
+          <td class="line-item-image">
+            <% if item.product.variant_images.any? %>
+              <%= image_tag item.product.variant_images[0].attachment.url(:mini) %>
+            <% else %>
+              <%= image_tag ""%>
+            <% end %>
+          </td>
           <td class="line-item-name">
             <%= item.product.name %><br><%= "(" + variant_options(item.variant) + ")" unless item.variant.option_values.empty? %>
           </td>

@@ -59,15 +59,17 @@ module Spree
         # unless @order.completed?
         #   @order.refresh_shipment_rates
         # end
+
+        redirect_to cart_admin_order_url(@order)
       end
 
       def cart
-        unless @order.completed?
-          @order.refresh_shipment_rates
-        end
-        if @order.shipped_shipments.count > 0
-          redirect_to edit_admin_order_url(@order)
-        end
+        # unless @order.completed?
+        #   @order.refresh_shipment_rates
+        # end
+        # if @order.shipped_shipments.count > 0
+        #   redirect_to edit_admin_order_url(@order)
+        # end
       end
 
       def update
