@@ -54,7 +54,7 @@ module Spree
       end
 
       def edit
-        can_not_transition_without_customer_info
+        # can_not_transition_without_customer_info
 
         # unless @order.completed?
         #   @order.refresh_shipment_rates
