@@ -25,7 +25,6 @@ $(document).ready ->
       deleteLineItem(line_item_id)
 
 toggleLineItemEdit = ->
-  console.log("RUN");
   link = $(this);
   link.parent().find('a.edit-line-item').toggle();
   link.parent().find('a.cancel-line-item').toggle();
