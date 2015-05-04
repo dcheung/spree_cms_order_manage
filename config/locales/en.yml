@@ -9,3 +9,6 @@ en:
     admin:
       tab:
         configurations: Settings
+
+    your_order_is_empty_add_product: Your order is empty
+
