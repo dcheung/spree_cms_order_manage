@@ -28,7 +28,7 @@
               <% end %>
             </td>
             <td class="line-item-name">
-              <%= item.product_item.name %><br><%= "(" + variant_options(item.variant) + ")" unless item.variant.option_values.empty? %>
+              <%= item.product_item.name %>
             </td>
             <td class="line-item-price align-center"><%= item.single_money.to_html %></td>
             <td class="line-item-qty-show align-center">
