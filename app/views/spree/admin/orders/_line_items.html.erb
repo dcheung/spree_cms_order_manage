@@ -18,7 +18,7 @@
     <tbody>
       <% order.line_items.each do |item| %>
         
-        <% if item.product.presence? %>
+        <% if item.product_id.presence? %>
           <tr class="line-item" id="line-item-<%= item.id %>">
             <td class="line-item-image">
               <% if item.product.variant_images.any? %>
