@@ -18,17 +18,17 @@
     <tbody>
       <% order.line_items.each do |item| %>
         
-        <% if item.product_id.presence? %>
+        <% if item.product_item %>
           <tr class="line-item" id="line-item-<%= item.id %>">
             <td class="line-item-image">
-              <% if item.product.variant_images.any? %>
-                <%= image_tag item.product.variant_images[0].attachment.url(:mini) %>
+              <% if item.product_item.variant_images.any? %>
+                <%= image_tag item.product_item.variant_images[0].attachment.url(:mini) %>
               <% else %>
                 <%= image_tag ""%>
               <% end %>
             </td>
             <td class="line-item-name">
-              <%= item.product.name %><br><%= "(" + variant_options(item.variant) + ")" unless item.variant.option_values.empty? %>
+              <%= item.product_item.name %><br><%= "(" + variant_options(item.variant) + ")" unless item.variant.option_values.empty? %>
             </td>
             <td class="line-item-price align-center"><%= item.single_money.to_html %></td>
             <td class="line-item-qty-show align-center">
