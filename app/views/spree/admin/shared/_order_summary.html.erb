@@ -3,7 +3,7 @@
     <dt id="order_status" data-hook><%= Spree.t(:status) %>:</dt>
     <dd><span class="state <%= @order.state %>"><%= Spree.t(@order.state, :scope => :order_state) %></span></dd>
     <dt data-hook='admin_order_tab_subtotal_title'><%= Spree.t(:total) %>:</dt>
-    <dd id='item_total'><%= @order.display_item_total.to_html %></dd>
+    <dd id='item_total'><%= @order.total_price %></dd>
 
     <% if @order.completed? %>
       <dt><%= Spree.t(:shipment) %>: </dt>
