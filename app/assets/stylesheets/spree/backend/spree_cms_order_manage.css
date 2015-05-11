@@ -9,9 +9,33 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 
 }
 
-.dow-block:hover
+.expand-trigger
+{
+  flex: 1;
+}
+
+.expand-trigger:hover
 {
   cursor: pointer;
+}
+
+.expand-trigger .icon
+{
+  margin: 2px;
+  font-size: 18px;
+  color: green; 
+  transition: all 0.2s;
+}
+
+.expand-trigger .icon.expand
+{
+  transform: rotateZ(90deg);
+  color: #6B6B6B;
+}
+
+.dow-block:hover
+{
+
 }
 
   .dow-block .title
@@ -24,40 +48,37 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     margin: 4px 0;
   }
 
-    .dow-block .title .icon
-    {
-      margin: 2px;
-      font-size: 18px;
-      color: green; 
-      transition: all 0.2s;
-    }
+  .dow-block .title .piece
+  {
+    display: inline;
+    width: 25%;
+  }
 
-    .dow-block .title .icon.expand
+    .dow-block .title .piece.status
     {
-      transform: rotateZ(90deg);
-      color: #6B6B6B;
+      text-align: right;
+      display: flex;
+      justify-content: center;
     }
 
     .dow-block .title .dow
     {
-      display: inline;
       font-size: 16px;
       flex: 1;
       margin-left: 8px;
       font-weight: bold;
       color: #307ACD;
+      display: inline;
     }
 
     .dow-block .title .date-delivery
     {
-      display: inline;
       font-size: 15px;
       flex: 1;
     }
 
     .dow-block .title .price
     {
-      display: inline;
       font-size: 15px;
       flex: 1;
       font-weight: bolder;
@@ -67,9 +88,56 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 
     .dow-block .title .status
     {
-      display: inline;
       font-size: 15px;
       margin-right: 10px;
+    }
+
+    .dow-block .title .status.show
+    {
+      /*display: none;*/
+    }
+
+    .dow-block .title .status.edit
+    {
+      display: none;
+    }
+
+    .dow-block .title .status.edit input
+    {
+      height: 25px;
+    }
+
+    .dow-block .title .button.fa
+    {
+      display: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      padding: 5px;
+      text-align: center;
+      margin: 0 2px;
+      cursor: pointer;
+      /*flex: 1;*/
+    }
+
+    .dow-block .title .button.save
+    {
+      background-color: rgb(159, 200, 32);
+    }
+
+    .dow-block .title .button.save:hover
+    {
+      background-color: rgb(83, 109, 2);
+    }
+
+    .dow-block .title .button.cancel
+    {
+      background-color: rgb(214, 56, 18);
+    }
+
+    .dow-block .title .button.cancel:hover
+    {
+      background-color: rgb(146, 40, 14);
     }
 
   .dow-block .content

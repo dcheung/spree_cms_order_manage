@@ -4,12 +4,34 @@
         <div class="dow-block">
 
           <div class="title">
-            <i class="icon fa fa-arrow-circle-right"></i>
-          
-            <div class="dow"> <%= @dayofweek_text[dow[0]] %> </div>
-            <div class="date-delivery"> <%= dow[1][0].delivery_date.strftime("%Y-%m-%d") %> </div>
-            <div class="price"> <%= getPrice(dow[1]) %> </div>
-            <div class="status"> <span class="state <%= dow[1][0].status %>"><%= dow[1][0].status %> </div>
+
+            <div class="expand-trigger piece">
+              <i class="icon fa fa-arrow-circle-right"></i>
+            
+              <div class="dow"> <%= @dayofweek_text[dow[0]] %> </div>
+            </div>
+
+            <div class="order-info" data-order-id="<%= params[:id] %>"></div>
+
+            <div class="date-delivery piece"> <%= dow[1][0].delivery_date.strftime("%Y-%m-%d") %> </div>
+            <div class="price piece"> <%= getPrice(dow[1]) %> </div>
+
+            <div class="piece status">
+              <div class="status show"> 
+                <span class="state <%= dow[1][0].status %>">
+                  <%= dow[1][0].status %> 
+                </span>
+              </div>
+              <div class="status edit"> 
+                <select class="select3"> 
+                  <option value="cart">cart</option>
+                  <option value="delivery">delivery</option>
+                  <option value="complete">complete</option>
+                </select>
+              </div>
+              <div title="Save" class="button fa fa-ok save"></div>
+              <div title="Cancel"class="button fa fa-cancel cancel"></div>
+            </div>
           </div>
 
           <div class="content"> 
@@ -47,9 +69,6 @@
                   <td class="line-item-qty-show align-center">
                     <%= item.quantity %>
                   </td>
-                  <td class="line-item-qty-edit hidden">
-                    <%= number_field_tag :quantity, item.quantity, :min => 0, :class => "line_item_quantity", :size => 5 %>
-                  </td>
                   <td class="line-item-total align-center"><%= item.price * item.quantity %></td>
                   <!-- <td class="cart-line-item-delete actions" data-hook="cart_line_item_delete">
                     <% if can? :update, item %>
@@ -75,9 +94,6 @@
                   <td class="line-item-price align-center"><%= item.single_money.to_html %></td>
                   <td class="line-item-qty-show align-center">
                     <%= item.quantity %>
-                  </td>
-                  <td class="line-item-qty-edit hidden">
-                    <%= number_field_tag :quantity, item.quantity, :min => 0, :class => "line_item_quantity", :size => 5 %>
                   </td>
                   <td class="line-item-total align-center"><%= line_item_shipment_price(item, item.quantity) %></td>
                   <!-- <td class="cart-line-item-delete actions" data-hook="cart_line_item_delete">
