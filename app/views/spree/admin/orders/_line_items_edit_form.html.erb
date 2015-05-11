@@ -8,7 +8,7 @@
   <% if order.line_items.exists? %>
       <fieldset class="no-border-bottom" id="order-total" data-hook="order_details_total">
         <legend><%= Spree.t(:order_total) %></legend>
-        <span class="order-total"><%= order.total_price %></span>
+        <span class="order-total"><%= number_to_currency(@order.total_price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></span>
       </fieldset>
   <% end %>
 

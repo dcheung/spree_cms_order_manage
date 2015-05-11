@@ -14,7 +14,7 @@
             <div class="order-info" data-order-id="<%= params[:id] %>"></div>
 
             <div class="date-delivery piece"> <%= dow[1][0].delivery_date.strftime("%Y-%m-%d") %> </div>
-            <div class="price piece"> <%= getPrice(dow[1]) %> </div>
+            <div class="price piece"> <%= number_to_currency(getPrice(dow[1]), :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %> </div>
 
             <div class="piece status">
               <div class="status show"> 
@@ -65,11 +65,11 @@
                   <td class="line-item-name">
                     <%= item.product_item.name %>
                   </td>
-                  <td class="line-item-price align-center"><%= item.single_money.to_html %></td>
+                  <td class="line-item-price align-center"><%= number_to_currency(item.price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></td>
                   <td class="line-item-qty-show align-center">
                     <%= item.quantity %>
                   </td>
-                  <td class="line-item-total align-center"><%= item.price * item.quantity %></td>
+                  <td class="line-item-total align-center"><%= number_to_currency(item.price * item.quantity, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></td>
                   <!-- <td class="cart-line-item-delete actions" data-hook="cart_line_item_delete">
                     <% if can? :update, item %>
                       <%= link_to '', '#', :class => 'save-line-item fa fa-ok no-text with-tip', :data => { 'line-item-id' => item.id, :action => 'save'}, :title => Spree.t('actions.save'), :style => 'display: none' %>
@@ -91,11 +91,11 @@
                   <td class="line-item-name">
                     <%= item.box.name %>
                   </td>
-                  <td class="line-item-price align-center"><%= item.single_money.to_html %></td>
+                  <td class="line-item-price align-center"><%= number_to_currency(item.price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></td>
                   <td class="line-item-qty-show align-center">
                     <%= item.quantity %>
                   </td>
-                  <td class="line-item-total align-center"><%= line_item_shipment_price(item, item.quantity) %></td>
+                  <td class="line-item-total align-center"><%= number_to_currency(item.price * item.quantity, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></td>
                   <!-- <td class="cart-line-item-delete actions" data-hook="cart_line_item_delete">
                     <% if can? :update, item %>
                       <%= link_to '', '#', :class => 'save-line-item fa fa-ok no-text with-tip', :data => { 'line-item-id' => item.id, :action => 'save'}, :title => Spree.t('actions.save'), :style => 'display: none' %>

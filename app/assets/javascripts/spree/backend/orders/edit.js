@@ -91,6 +91,8 @@ function UpdateLineItemStatus(orderId, status, dateDelivery, that)
     {
       show_flash("success", "Update line item status successfully!");
       toggleEdit(that);
+
+      $(that).parent().find(".status.show span").text(status);
     },
     error: function(e)
     {

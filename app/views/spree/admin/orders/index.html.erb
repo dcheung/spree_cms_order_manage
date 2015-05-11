@@ -79,10 +79,10 @@
        <col style="width: 20%;">
        <col style="width: 12%;">
        <% if Spree::Order.checkout_step_names.include?(:delivery) %>
-         <col style="width: 22%;">
+         <col style="width: 12%;">
        <% end %>
        <col style="width: 20%;">
-       <col style="width: 8%;">
+       <col style="width: 18%;">
     </colgroup>
     <thead>
       <tr data-hook="admin_orders_index_headers">
@@ -113,7 +113,7 @@
             <%= mail_to order.email %>
           <% end %>
         </td>
-        <td class="align-center"><%= order.total_price %></td>
+        <td class="align-center"><%= number_to_currency(order.total_price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></td>
         <td class='actions align-center' data-hook="admin_orders_index_row_actions">
           <%= link_to_edit_url edit_admin_order_path(order), :title => "admin_edit_#{dom_id(order)}", :no_text => true %>
         </td>
