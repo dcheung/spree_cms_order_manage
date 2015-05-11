@@ -2,3 +2,77 @@
 Placeholder manifest file.
 the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/backend/all.css'
 */
+
+
+.dow-block
+{
+
+}
+
+.dow-block:hover
+{
+  cursor: pointer;
+}
+
+  .dow-block .title
+  {
+    display: flex;
+    padding: 8px;
+    background: #EFF5FC;
+    font-size: 15px;
+    border-radius: 4px;
+    margin: 4px 0;
+  }
+
+    .dow-block .title .icon
+    {
+      margin: 2px;
+      font-size: 18px;
+      color: green; 
+      transition: all 0.2s;
+    }
+
+    .dow-block .title .icon.expand
+    {
+      transform: rotateZ(90deg);
+      color: #6B6B6B;
+    }
+
+    .dow-block .title .dow
+    {
+      display: inline;
+      font-size: 16px;
+      flex: 1;
+      margin-left: 8px;
+      font-weight: bold;
+      color: #307ACD;
+    }
+
+    .dow-block .title .date-delivery
+    {
+      display: inline;
+      font-size: 15px;
+      flex: 1;
+    }
+
+    .dow-block .title .price
+    {
+      display: inline;
+      font-size: 15px;
+      flex: 1;
+      font-weight: bolder;
+      font-size: 16px;
+      color: red;
+    }
+
+    .dow-block .title .status
+    {
+      display: inline;
+      font-size: 15px;
+      margin-right: 10px;
+    }
+
+  .dow-block .content
+  {
+    display: none;
+  }

@@ -5,6 +5,7 @@ module Spree
       before_action :load_order, only: [:edit, :update, :cancel, :resume, :approve, :resend, :open_adjustments, :close_adjustments, :cart]
 
       respond_to :html
+      helper_method :getPrice
 
       def index
         params[:q] ||= {}
@@ -54,6 +55,7 @@ module Spree
       end
 
       def edit
+
         # can_not_transition_without_customer_info
 
         # unless @order.completed?
@@ -64,12 +66,50 @@ module Spree
       end
 
       def cart
+
+        @dayofweek_text = {:mon => "Monday", :tue => "Tuesday", :wed => "Wednesday", :thu => "Thursday", :fri => "Friday"}
+
+        @dayofweek_items = {:mon => [], :tue => [], :wed => [], :thu => [], :fri => []}
+
+        line_items = @order.line_items;
+
+        line_items.each do |item|
+          case item.delivery_date.strftime('%w')
+          when "1"
+            @dayofweek_items[:mon] << item
+            # @dayofweek_items[:mon][:price] += item.total_price
+            puts "here"
+          when "2"
+            @dayofweek_items[:tue] << item
+            puts "here"
+          when "3"
+            @dayofweek_items[:wed] << item
+            puts "here"
+          when "4"
+            @dayofweek_items[:thu] << item
+            puts "here"
+          when "5" 
+            @dayofweek_items[:fri] << item
+            puts "here"
+          end
+        end
+
         # unless @order.completed?
         #   @order.refresh_shipment_rates
         # end
         # if @order.shipped_shipments.count > 0
         #   redirect_to edit_admin_order_url(@order)
         # end
+      end
+
+      def getPrice(dowitems)
+        price = 0
+
+        dowitems.each do |item|
+          price += item.price * item.quantity
+        end
+
+        return price
       end
 
       def update
