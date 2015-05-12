@@ -6,6 +6,7 @@ module Spree
 
       respond_to :html
       helper_method :getPrice
+      helper_method :getPaymentState
 
       def index
         params[:q] ||= {}
@@ -165,6 +166,20 @@ module Spree
         flash[:success] = Spree.t(:all_adjustments_closed)
 
         respond_with(@order) { |format| format.html { redirect_to :back } }
+      end
+
+      def getPaymentState(payment)
+        state = ""
+        if payment
+          isPay = payment.is_pay
+
+          if isPay
+            state = "complete"
+          else
+            state = "pending"
+          end
+        end
+        return state
       end
 
       private

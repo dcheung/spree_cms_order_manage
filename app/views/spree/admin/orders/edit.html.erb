@@ -1,7 +1,4 @@
 <% content_for :page_actions do %>
-  <% if can?(:fire, @order) %>
-    <li><%= event_links %></li>
-  <% end %>
   <% if can?(:resend, @order) %>
     <li><%= button_link_to Spree.t(:resend), resend_admin_order_url(@order), method: :post, icon: 'email' %></li>
   <% end %>
@@ -19,8 +16,6 @@
 <% if @order.payments.valid.any? && @order.considered_risky? %>
   <%= render 'spree/admin/orders/risk_analysis', latest_payment: @order.payments.valid.last %>
 <% end %>
-
-<%= render partial: 'add_product' if @order.shipment_state != 'shipped' && can?(:update, @order) %>
 
 <% if @order.line_items.empty? %>
   <div class="no-objects-found">
