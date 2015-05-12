@@ -7,7 +7,7 @@
 
     <% if @order.completed? %>
       <dt><%= Spree.t(:payment) %>: </dt>
-      <dd id='payment_status'><span class="state <%= @order.payment_state %>"><%= Spree.t(@order.payment_state, :scope => :payment_states, :default => [:missing, "none"]) %></span></dd>
+      <dd id='payment_status'><span class="state <%= getPaymentState(@order.payment) %>"><%= getPaymentState(@order.payment) %></span></dd>
       <dt data-hook='admin_order_tab_date_completed_title'><%= Spree.t(:date_completed) %>:</dt>
       <dd id='date_complete'><%= pretty_time(@order.completed_at) %></dd>
     <% end %>
