@@ -93,6 +93,8 @@ function UpdateLineItemStatus(orderId, status, dateDelivery, that)
       toggleEdit(that);
 
       $(that).parent().find(".status.show span").text(status);
+
+      window.location.reload();
     },
     error: function(e)
     {

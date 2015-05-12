@@ -16,21 +16,23 @@
             <div class="date-delivery piece"> <%= dow[1][0].delivery_date.strftime("%Y-%m-%d") %> </div>
             <div class="price piece"> <%= number_to_currency(getPrice(dow[1]), :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %> </div>
 
-            <div class="piece status">
-              <div class="status show"> 
-                <span class="state <%= dow[1][0].status %>">
-                  <%= dow[1][0].status %> 
-                </span>
+            <% if @order.state != "cart" %>
+              <div class="piece status">
+                <div class="status show"> 
+                  <span class="state <%= dow[1][0].status %>">
+                    <%= dow[1][0].status %> 
+                  </span>
+                </div>
+                <div class="status edit"> 
+                  <select class="select3"> 
+                    <option value="delivery">delivery</option>
+                    <option value="complete">complete</option>
+                  </select>
+                </div>
+                <div title="Save" class="button fa fa-ok save"></div>
+                <div title="Cancel"class="button fa fa-cancel cancel"></div>
               </div>
-              <div class="status edit"> 
-                <select class="select3"> 
-                  <option value="delivery">delivery</option>
-                  <option value="complete">complete</option>
-                </select>
-              </div>
-              <div title="Save" class="button fa fa-ok save"></div>
-              <div title="Cancel"class="button fa fa-cancel cancel"></div>
-            </div>
+            <% end %>
           </div>
 
           <div class="content"> 
