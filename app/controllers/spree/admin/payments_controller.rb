@@ -9,7 +9,7 @@ module Spree
 
       respond_to :html
 
-      helper_mothod :getPaymentState
+      helper_method :getPaymentState
 
       def index
         @payments = @order.payments.includes(:refunds => :reason)
