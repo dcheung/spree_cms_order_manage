@@ -6,6 +6,7 @@
     <dd id='item_total'><%= number_to_currency(@order.total_price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></dd>
 
     <% if @order.completed? %>
+      <dt><%= Spree.t(:payment) %>: </dt>
       <dd id='payment_status'><span class="state <%= @order.payment_state %>"><%= Spree.t(@order.payment_state, :scope => :payment_states, :default => [:missing, "none"]) %></span></dd>
       <dt data-hook='admin_order_tab_date_completed_title'><%= Spree.t(:date_completed) %>:</dt>
       <dd id='date_complete'><%= pretty_time(@order.completed_at) %></dd>
