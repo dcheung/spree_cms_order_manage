@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% payments.each do |payment| %>
-      <tr id="<%= dom_id(payment) %>" data-hook="payments_row" class="<%= cycle('odd', 'even', name: 'payment_table_cycle')%>">
+      <tr data-hook="payments_row" class="<%= cycle('odd', 'even', name: 'payment_table_cycle')%>">
         <td><%= pretty_time(payment.created_at) %></td>
         <td class="align-center amount"><%= number_to_currency(payment.amount, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") %></td>
         <td class="align-center"><%= payment.payment_type %></td>

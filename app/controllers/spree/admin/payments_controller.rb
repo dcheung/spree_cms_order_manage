@@ -9,8 +9,6 @@ module Spree
 
       respond_to :html
 
-      helper_method :getPaymentState
-
       def index
         @payments = @order.payments.includes(:refunds => :reason)
         @refunds = @payments.flat_map(&:refunds)
@@ -64,17 +62,6 @@ module Spree
         flash[:error] = "#{ge.message}"
       ensure
         redirect_to admin_order_payments_path(@order)
-      end
-
-      def getPaymentState(payment)
-        isPay = payment.is_pay
-        state = ""
-
-        if isPay
-          state = "complete"
-        else
-          state = "pending"
-        end
       end
 
       private
